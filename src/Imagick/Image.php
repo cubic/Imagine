@@ -155,13 +155,13 @@ final class Image extends AbstractImage implements InfoProvider
                 // Crop each layer separately
                 $this->imagick = $this->imagick->coalesceImages();
                 foreach ($this->imagick as $frame) {
-                    $frame->cropImage($size->getWidth(), $size->getHeight(), $start->getX(), $start->getY());
+                    $frame->cropImage($size->getWidth(), $size->getHeight(), (int)$start->getX(), (int)$start->getY());
                     // Reset canvas for gif format
                     $frame->setImagePage(0, 0, 0, 0);
                 }
                 $this->imagick = $this->imagick->deconstructImages();
             } else {
-                $this->imagick->cropImage($size->getWidth(), $size->getHeight(), $start->getX(), $start->getY());
+                $this->imagick->cropImage($size->getWidth(), $size->getHeight(), (int)$start->getX(), (int)$start->getY());
                 // Reset canvas for gif format
                 $this->imagick->setImagePage(0, 0, 0, 0);
             }
